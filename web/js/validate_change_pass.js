@@ -31,3 +31,15 @@ $("#update_username_form").validate({
         }
     }
 });
+$('#change_password_submit').click( function () {
+    var restUrl = 'http://gis1:6080/arcgis/rest'
+    $.post(url, 
+        {
+            'username': $('#username').val(),
+            'old_pass': $('#old_password').val(), 
+            'new_pass': $('#new_password').val()
+        },
+        success(data, textStatus, jqXHR),
+        'dataType': 'json'
+    );
+});
