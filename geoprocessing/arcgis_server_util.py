@@ -165,14 +165,14 @@ def authenticate_change_password(username, old_password, new_password):
     # create ArcGIS Server object instance
     ags = Ags(server_name)
 
-    # authenticate with admin rest endpoint
-    ags.authenticate(admin_username, admin_password)
-
-    # check to make sure user is, in fact, who they proport to be
+    # check to make sure user is, in fact, who they purport to be
     user_valid = ags.validate_user(username, old_password)
 
     # if the user is who they say they are
     if user_valid:
+
+        # authenticate with admin rest endpoint
+        ags.authenticate(admin_username, admin_password)
 
         # change the password and report status of attempting to change password
         return ags.change_user_password(username, new_password)
