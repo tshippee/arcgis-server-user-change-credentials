@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 
 <head>
     <title>Credentials Self-Service</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scaleable=no">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
@@ -11,50 +11,57 @@
 <body>
 
 <div class="container">
-    <form id="update_username_form" class="form-horizontal" method="post">
-        <fieldset>
-            <div id="legend">
-                <legend class="">ArcGIS for Server Password Self-Service</legend>
+    <section class="col-md-6 col-md-offset-3">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h1 class="panel-title">ArcGIS for Server Password Self-Service</h1>
             </div>
-            <div class="alert alert-danger col-md-4 col-md-offset-4" hidden="true"></div>
-            <div class="form-group">
-                <div class="col-md-4 col-md-offset-4">
-                    <label for="username" class="sr-only">username</label>
-                    <input type="text" id="username" name="username" placeholder="username"
-                           class="form-control input-lg" autofocus="true">
-                </div>
+            <div class="panel-body">
+                <div class="alert" hidden="true"></div>
+                <form id="update_username_form" class="form-horizontal" method="post">
+                    <fieldset>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <label for="username" class="sr-only">username</label>
+                                <input type="text" id="username" name="username" placeholder="username"
+                                       class="form-control input-lg" autofocus="true">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <label for="old_password" class="sr-only">old password</label>
+                                <input type="password" id="old_password" name="old_password"
+                                       placeholder="current password"
+                                       class="form-control input-lg">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <label for="new_password" class="sr-only">new password</label>
+                                <input type="password" id="new_password" name="new_password" placeholder="new password"
+                                       class="form-control input-lg">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <label for="new_password_confirm" class="sr-only">confirm new password</label>
+                                <input type="password" id="new_password_confirm" name="new_password_confirm"
+                                       placeholder="confirm new password" class="form-control input-lg">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12 text-right">
+                                <button id="change_password_submit" class="btn btn-primary btn-large">
+                                    <span class="glyphicon glyphicon-check"></span>
+                                    Change Password
+                                </button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
             </div>
-            <div class="form-group">
-                <div class="col-md-4 col-md-offset-4">
-                    <label for="old_password" class="sr-only">old password</label>
-                    <input type="password" id="old_password" name="old_password"
-                           placeholder="current password" class="form-control input-lg">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-4 col-md-offset-4">
-                    <label for="new_password" class="sr-only">new password</label>
-                    <input type="password" id="new_password" name="new_password"
-                           placeholder="new password" class="form-control input-lg">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-4 col-md-offset-4">
-                    <label for="new_password_confirm" class="sr-only">confirm new password</label>
-                    <input type="password" id="new_password_confirm" name="new_password_confirm"
-                           placeholder="confirm new password" class="form-control input-lg">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-4 col-md-offset-4">
-                    <button class="btn btn-primary btn-large">
-                        <span class="glyphicon glyphicon-check"></span>
-                        Change Password
-                    </button>
-                </div>
-            </div>
-        </fieldset>
-    </form>
+        </div>
+    </section>
 </div>
 
 <script src="js/libs/jquery-1.10.2.js"></script>
