@@ -16,6 +16,10 @@ function submit_form () {
 
     // if there, remove the alert-danger class
     $("div.alert[class~='alert-danger']").removeClass('alert-danger');
+    $("div.panel[class~='panel-danger']").removeClass('panel-danger');
+
+    // disable all form elements
+    $("fieldset :input").attr('disabled', 'disabled');
 
     // set alert div to alert-info
     $("div.alert:not([class~='alert-info'])").addClass('alert-info');
@@ -98,7 +102,9 @@ $("#update_username_form").validate({
         }
     },
 
-    submitHandler: submit_form()
+    submitHandler: function() {
+        submit_form();
+    }
 
     // tag fields as errors when invalid
 //    showErrors: function(errorMap, errorList) {
