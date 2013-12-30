@@ -35,7 +35,7 @@ function submit_form() {
     $div_alert.fadeIn();
 
     // post to REST endpoint
-    var post_result = $.post(restUrl, function () {
+    var jqxhr = $.post(restUrl, function () {
 
     })
         // if finished successfully
@@ -124,7 +124,7 @@ $("#update_username_form").validate({
 
             // remove the alert-danger class
             $("div.alert[class~='alert-danger']").removeClass('alert-danger');
-            
+
         }
     },
 
