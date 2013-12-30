@@ -12,6 +12,7 @@ Purpose:    ArcGIS for Server provides the capability for updating user credenti
 WARNING:    This script does contain your administrator credentials. Ensure this script is saved in a secure location.
 """
 # variables
+# the script will not work unless the correct credentials are entered here
 admin_username = ''
 admin_password = ''
 server_name = ''
