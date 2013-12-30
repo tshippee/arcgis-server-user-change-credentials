@@ -3,7 +3,7 @@
  */
 
 // submit handler for form
-function submit_form () {
+function submit_form() {
 
     // url of the rest endpoint created when publishing the Python tool
     var restUrl = 'http://gis1:6080/arcgis/rest/services/ChangeUserPassword/GPServer/Change%20User%20Password/execute'
@@ -16,7 +16,6 @@ function submit_form () {
 
     // if there, remove the alert-danger class
     $("div.alert[class~='alert-danger']").removeClass('alert-danger');
-    $("div.panel[class~='panel-danger']").removeClass('panel-danger');
 
     // disable all form elements
     $("fieldset :input").attr('disabled', 'disabled');
@@ -36,7 +35,35 @@ function submit_form () {
     $div_alert.fadeIn();
 
     // post to REST endpoint
-//    $.post(restUrl, )
+    var post_result = $.post(restUrl, function () {
+
+    })
+        // if finished successfully
+        .done(function () {
+            alert("second success");
+        })
+
+        // if the process fails
+        .fail(function () {
+
+            // set class on alert box to alert-danger if it does not already exist
+            $("div.alert:not([class~='alert-danger'])").addClass('alert-danger');
+
+            // single find for div.alert
+             var $div_alert = $("div.alert");
+
+            // add progress bar and message to alert div
+            $div_alert.html(
+                'Change password failed\n'
+            );
+
+            // fade in the alert div
+            $div_alert.fadeIn();
+        })
+        .always(function () {
+            alert("finished");
+        });
+
 };
 
 // use jquery validate to configure form validation
@@ -86,7 +113,6 @@ $("#update_username_form").validate({
 
             // set class on alert box to alert-danger if it does not already exist
             $("div.alert:not([class~='alert-danger'])").addClass('alert-danger');
-            $("div.panel:not([class~='panel-danger'])").addClass('panel-danger');
 
             // fade in the alert div
             $div_alert.fadeIn();
@@ -98,11 +124,11 @@ $("#update_username_form").validate({
 
             // remove the alert-danger class
             $("div.alert[class~='alert-danger']").removeClass('alert-danger');
-            $("div.panel[class~='panel-danger']").remoteClass('panel-danger');
+            
         }
     },
 
-    submitHandler: function() {
+    submitHandler: function () {
         submit_form();
     }
 
