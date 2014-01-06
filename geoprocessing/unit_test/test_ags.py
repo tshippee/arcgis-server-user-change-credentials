@@ -2,7 +2,7 @@
 import unittest
 import urllib
 import json
-import arcgis_server_util
+from geoprocessing import arcgis_server_util
 
 # variables
 # you will need to populate these for the unit tests to successfully run

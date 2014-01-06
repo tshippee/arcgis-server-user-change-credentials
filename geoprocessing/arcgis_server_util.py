@@ -21,6 +21,7 @@ server_name = ''
 import json
 import urllib
 import httplib
+from arcpy import GetParameterAsText
 
 
 class Ags(object):
@@ -177,3 +178,14 @@ def authenticate_change_password(username, old_password, new_password):
 
         # change the password and report status of attempting to change password
         return ags.change_user_password(username, new_password)
+
+# provide the hooks to execute as a tool
+if __name__ == '__main__':
+
+    # collect parameters from tool
+    username = GetParameterAsText(0)
+    current_pass = GetParameterAsText(1)
+    new_pass = GetParameterAsText(2)
+
+    # execute tool
+    authenticate_change_password(username, current_pass, new_pass)

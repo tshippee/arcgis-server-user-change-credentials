@@ -1,16 +1,19 @@
 # import modules
 import unittest
-from arcgis_server_util import authenticate_change_password
+from geoprocessing.arcgis_server_util import authenticate_change_password
 
 # variables
-username = 'testUser'
-old_password = 'test'
-new_password = 'test01'
+# you will need to populate these for the unit tests to successfully run
+username = ''
+old_password = ''
+new_password = ''
 
 
 class TestAuthenticateChangePassword(unittest.TestCase):
     def test_authenticate_change_password(self):
         status = authenticate_change_password(username, old_password, new_password)
+        if status:
+            authenticate_change_password(username, new_password, old_password)
         self.assertTrue(status, 'failed to change user password')
 
 
