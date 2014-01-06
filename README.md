@@ -1,4 +1,12 @@
 arcgis-server-user-change-credentials
 =====================================
 
-ArcGIS for Server provides the capability for updating user credentials only by the administrator. This script provides the foundation to create a geoprocessing service allowing users to update their own password without needing the intervention of an administrator. The script expects three parameters from four fields. The first field is the username. The second is the current user password. The last two are the desired new password. The user is first validated to ensure they are, in fact, who they purport to be. Next, the new passwords are compared to ensure they are identical. Finally, using the administrator credentials saved in the script, the user password is updated.
+ArcGIS for Server provides the capability for updating user credentials only by the administrator. This script provides the foundation to create a geoprocessing service allowing users to update their own password without needing the intervention of an administrator. The repository contains two directories, one for each componet of this solution; geoprocessing and web.
+
+The geoprocessing directory contains all the resources needed to publish the geoprocessing service to your ArcGIS for Server instance and create a geoprocessing service. The critical resources in this directory are the arcgis_server_util.py script and the Toolbox.tbx files. The other resources were for unit testing during my development process and can be used if you want to modify or extend the functionality.
+
+When executed, the Python script first attempts to log in and get a token through the normal rest endpoint using the current user credentials. This ensures the user is, in fact, who they purport to be.  Next, using the administrator credentials saved in the script (on the server), the user password is updated.
+
+The web interface expects three parameters from four fields. The first field is the username. The second is the current user password. The last two are the desired new password. Although only the first password is used when posting to the published rest endpoint on the server, the form will not submit unless both passwords match. Once both passwords match, the form is allowed to be submitted and posted to the rest endpoint exposed by publishing the enclosed Python script tool.
+
+The tool in the geoprocessing toolbox must be run once successfully in ArcMap. Once run once successfully, a result object will be available in the results window inside ArcMap. This result object can be published to your ArcGIS for Server instance the web form can then call against.
